@@ -4,7 +4,8 @@ import io from 'socket.io-client';
 import book from './bookStore.jpg';
 import logo from './bookLogo.png';
 
-const socket = io('http://localhost:30001');
+// Change the socket connection to use the deployed backend URL
+const socket = io('https://bookbackend-gp8u.onrender.com');
 
 function App() {
   const [data, setData] = useState([]);
@@ -55,7 +56,7 @@ function App() {
   const handleDelete = (id) => {
     if (id > 0) {
       if (window.confirm("Are you sure that you want to delete this book?")) {
-        fetch(`http://localhost:30001/delete-book/${id}`, {
+        fetch(`https://bookbackend-gp8u.onrender.com/delete-book/${id}`, {
           method: 'DELETE'
         }).then(response => {
           if (!response.ok) {
@@ -85,7 +86,7 @@ function App() {
         author: author,
         price: price
       };
-      fetch('http://localhost:30001/add-book', { 
+      fetch('https://bookbackend-gp8u.onrender.com/add-book', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +113,7 @@ function App() {
       author: author,
       price: price
     };
-    fetch(`http://localhost:30001/update-book/${id}`, { 
+    fetch(`https://bookbackend-gp8u.onrender.com/update-book/${id}`, { 
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -242,6 +243,4 @@ function App() {
 }
 
 export default App;
-
-
 
