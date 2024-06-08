@@ -4,7 +4,6 @@ import io from 'socket.io-client';
 import book from './bookStore.jpg';
 import logo from './bookLogo.png';
 
-// Change the socket connection to use the deployed backend URL
 const socket = io('https://bookbackend-gp8u.onrender.com');
 
 function App() {
