@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import book from './bookStore.jpg';
 import logo from './bookLogo.png';
 
-const socket = io('https://book-back-end.onrender.com/');
+const socket = io('https://book-back-end.onrender.com');
 
 function App() {
   const [data, setData] = useState([]);
@@ -55,7 +55,7 @@ function App() {
   const handleDelete = (id) => {
     if (id > 0) {
       if (window.confirm("Are you sure that you want to delete this book?")) {
-        fetch(`https://book-back-end.onrender.com//delete-book/${id}`, {
+        fetch(`https://book-back-end.onrender.com/delete-book/${id}`, {
           method: 'DELETE'
         }).then(response => {
           if (!response.ok) {
@@ -85,7 +85,7 @@ function App() {
         author: author,
         price: price
       };
-      fetch('https://book-back-end.onrender.com//add-book', { 
+      fetch('https://book-back-end.onrender.com/add-book', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ function App() {
       author: author,
       price: price
     };
-    fetch(`https://book-back-end.onrender.com//update-book/${id}`, { 
+    fetch(`https://book-back-end.onrender.com/update-book/${id}`, { 
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
